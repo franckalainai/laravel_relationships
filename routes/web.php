@@ -20,5 +20,27 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/category/create', 'CategoryController@create')->name('category.create');
-Route::post('category/store', 'CategoryController@store')->name('category.store');
+Route::get('/user', function(){
+    //factory(\App\User::class, 3)->create();
+
+    /*
+    \App\Address::create([
+        'user_id' => 1,
+        'country' => "Cote d'Ivoire"
+    ]);
+
+    \App\Address::create([
+        'user_id' => 2,
+        'country' => 'Ghana'
+    ]);
+
+    \App\Address::create([
+        'user_id' => 3,
+        'country' => 'France'
+    ]);
+    */
+
+    $users = \App\User::all();
+
+    return view('users.index', compact('users'));
+});
